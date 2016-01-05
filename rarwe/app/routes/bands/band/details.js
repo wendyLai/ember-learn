@@ -17,6 +17,11 @@ export default Ember.Route.extend({
 					transition.abort();//abort终止当前跳转，且无新的跳转
 				}
 			}
+		},
+		save: function() {
+			var controller = this.get('controller');
+			var band = controller.get('model');
+			return band.save();
 		}
 	}
 });

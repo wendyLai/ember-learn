@@ -16,6 +16,9 @@
 				</div>
 			</div>
 		{{/unless}}
+		{{log model}}
+		{{log model.songs}}
+		{{log model.description}}
 		{{#each model.songs as |song|}}
 			<div class="list-group-item song">
 				{{song.title}}

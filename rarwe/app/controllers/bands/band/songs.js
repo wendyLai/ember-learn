@@ -7,6 +7,15 @@ export default Ember.Controller.extend({
 		enableSongCreation: function() {
 			this.set('songCreationStarted', true);//只有当创建第一个song的时候  songCreationStarted==true
 		},
+		updateRating: function(params) {
+			var song = params.item;
+			var rating = params.rating;
+			if (song.get('rating') === rating) {
+				rating = 0;
+			}
+			song.set('rating', rating);
+			song.save();
+		}
 	},
 	canCreateSong: Ember.computed('songCreationStarted', 'model.songs.length', function() {
 			return this.get('songCreationStarted') || this.get('model.songs.length');

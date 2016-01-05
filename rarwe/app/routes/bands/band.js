@@ -2,9 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model: function(params) {
-		//console.log(params);//传入的route的值URL
-		var bands = this.modelFor('bands');
-		return bands.get('content').findBy('slug', params.slug); // params.slug is now 'pearl-jam'
+		return this.store.findRecord('band', params.id);
 	},
 	afterModel:function(band) {
 		var description = band.get('description');
